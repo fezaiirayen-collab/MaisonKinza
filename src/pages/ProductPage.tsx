@@ -58,7 +58,7 @@ const ProductPage: React.FC = () => {
     );
   }
 
-  const canCustomize = product.category.toLowerCase() === "robe";
+  const canCustomize = product.category.toLowerCase().includes("robe");
   const selectedSize = sizeMode === "custom" ? "Sur mesure" : (size || product.sizes[0] || "Standard");
   const selectedColor = color || product.colors[0] || "Naturel";
   const selectedColorImages = getImagesForColor(product, selectedColor);

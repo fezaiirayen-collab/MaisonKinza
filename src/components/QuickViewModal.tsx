@@ -29,7 +29,7 @@ const QuickViewModal: React.FC = () => {
     (quickViewProduct.sizes && quickViewProduct.sizes.length > 0
       ? quickViewProduct.sizes[0]
       : "Standard"));
-  const canCustomize = quickViewProduct.category.toLowerCase() === "robe";
+  const canCustomize = quickViewProduct.category.toLowerCase().includes("robe");
 
   const handleAddToCart = () => {
     if (sizeMode === "custom" && customDetails.trim().length < 10) {
