@@ -91,13 +91,15 @@ create table if not exists public.orders (
   discount numeric(12, 2) not null default 0 check (discount >= 0),
   shipping_fee numeric(12, 2) not null default 0 check (shipping_fee >= 0),
   total numeric(12, 2) not null default 0 check (total >= 0),
+  delivery_delay_days integer not null default 0 check (delivery_delay_days >= 0 and delivery_delay_days <= 30),
   notes text,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
 
 alter table public.orders
-  add column if not exists user_id uuid references auth.users(id) on delete set null;
+  add column if not exists user_id uuid references auth.users(id) on delete set null,
+  add column if not exists delivery_delay_days integer not null default 0 check (delivery_delay_days >= 0 and delivery_delay_days <= 30);
 
 create index if not exists orders_user_id_idx on public.orders(user_id);
 update public.orders o
@@ -115,8 +117,14 @@ create table if not exists public.order_items (
   quantity integer not null default 1 check (quantity > 0),
   size text,
   color text,
+  size_mode text not null default 'standard' check (size_mode in ('standard', 'custom')),
+  custom_details text,
   created_at timestamptz not null default now()
 );
+
+alter table public.order_items
+  add column if not exists size_mode text not null default 'standard' check (size_mode in ('standard', 'custom')),
+  add column if not exists custom_details text;
 
 create table if not exists public.promo_codes (
   id uuid primary key default gen_random_uuid(),

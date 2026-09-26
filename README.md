@@ -40,6 +40,7 @@ Dans Supabase > SQL Editor, exÃ©cuter avec le rÃ´le propriÃ©taire, dans ce
 4. `supabase/contact-newsletter.sql`
 5. `supabase/product-color-variants.sql`
 6. `supabase/fix-live-database.sql`
+7. `supabase/order-tracking-custom-sizing.sql`
 
 Le dernier script rÃ©pare la vue publique `catalog_products`, les droits RLS, les catÃ©gories, le contenu du site et lâ€™association sÃ©curisÃ©e des commandes Ã  `auth.uid()`.
 

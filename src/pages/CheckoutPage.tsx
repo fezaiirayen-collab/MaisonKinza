@@ -110,6 +110,8 @@ const CheckoutPage: React.FC = () => {
 
   const subtotal = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
   const discountAmount = Math.round(subtotal * promoDiscount);
+  const customOrder = cart.some((item) => item.sizeMode === "custom");
+  const deliveryDelayDays = customOrder ? 2 : 0;
   const shippingFee = calculateShippingFee({
     subtotal,
     cartIsEmpty: cart.length === 0,
@@ -166,6 +168,7 @@ const CheckoutPage: React.FC = () => {
       subtotal,
       discount: discountAmount,
       total,
+      deliveryDelayDays,
     };
 
     setOrderSyncError("");
@@ -193,6 +196,8 @@ const CheckoutPage: React.FC = () => {
           quantity: item.quantity,
           size: item.size || null,
           color: item.color || null,
+          size_mode: item.sizeMode || "standard",
+          custom_details: item.customDetails || null,
         })),
         p_promo_code: promoCode || null,
       });
@@ -318,6 +323,12 @@ const CheckoutPage: React.FC = () => {
               Un SMS de confirmation a été transmis au{" "}
               <span className="text-black font-medium">{createdOrder.shippingAddress.phone}</span>. Notre atelier prépare votre commande avec le plus grand soin.
             </p>
+
+            {createdOrder.deliveryDelayDays ? (
+              <p className="mb-8 border border-black/10 bg-[#faf9f6] px-4 py-3 text-left text-[12px] text-stone">
+                Cette commande comprend une pièce sur mesure : <strong className="text-black">+{createdOrder.deliveryDelayDays} jours</strong> de délai de livraison.
+              </p>
+            ) : null}
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/compte" className="asala-btn-solid">
@@ -686,6 +697,9 @@ const CheckoutPage: React.FC = () => {
                         <p className="text-[10px] text-stone uppercase mt-0.5">
                           Taille: {item.size || "Standard"} • Qté: {item.quantity}
                         </p>
+                        {item.sizeMode === "custom" && (
+                          <p className="text-[10px] text-stone">Sur mesure · délai +2 jours</p>
+                        )}
                         <p className="text-[12px] font-semibold text-black mt-1">
                           {item.product.price * item.quantity} TND
                         </p>
@@ -727,6 +741,12 @@ const CheckoutPage: React.FC = () => {
                       {shippingFee === 0 ? "Offerte" : `${shippingFee} TND`}
                     </span>
                   </div>
+                  {customOrder && (
+                    <div className="flex justify-between text-stone">
+                      <span>Délai sur mesure</span>
+                      <span className="text-black font-medium">+2 jours</span>
+                    </div>
+                  )}
                 </div>
 
                 <div className="flex justify-between items-baseline pt-4">

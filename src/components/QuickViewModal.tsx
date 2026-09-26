@@ -7,25 +7,36 @@ import ProductImage from "@/components/ProductImage";
 const QuickViewModal: React.FC = () => {
   const { quickViewProduct, closeQuickView, addToCart, toggleFavorite, isFavorite } = useCart();
   const [selectedSize, setSelectedSize] = useState<string>("");
+  const [sizeMode, setSizeMode] = useState<"standard" | "custom">("standard");
+  const [customDetails, setCustomDetails] = useState("");
+  const [customSizeError, setCustomSizeError] = useState("");
   const [selectedImageIdx, setSelectedImageIdx] = useState(0);
 
   // Reset state whenever the viewed product changes
   useEffect(() => {
     setSelectedSize("");
+    setSizeMode("standard");
+    setCustomDetails("");
+    setCustomSizeError("");
     setSelectedImageIdx(0);
   }, [quickViewProduct?.id]);
 
   if (!quickViewProduct) return null;
 
   const fav = isFavorite(String(quickViewProduct.id));
-  const currentSize =
+  const currentSize = sizeMode === "custom" ? "Sur mesure" : (
     selectedSize ||
     (quickViewProduct.sizes && quickViewProduct.sizes.length > 0
       ? quickViewProduct.sizes[0]
-      : "Standard");
+      : "Standard"));
+  const canCustomize = quickViewProduct.category.toLowerCase() === "robe";
 
   const handleAddToCart = () => {
-    addToCart(quickViewProduct, 1, currentSize);
+    if (sizeMode === "custom" && customDetails.trim().length < 10) {
+      setCustomSizeError("Ajoutez vos mesures ou vos précisions.");
+      return;
+    }
+    addToCart(quickViewProduct, 1, currentSize, undefined, sizeMode, customDetails);
     closeQuickView();
   };
 
@@ -102,21 +113,34 @@ const QuickViewModal: React.FC = () => {
                 <span className="text-[11px] uppercase tracking-wider text-black font-medium block mb-2">
                   Taille : {currentSize}
                 </span>
-                <div className="flex flex-wrap gap-2">
-                  {quickViewProduct.sizes.map((s) => (
-                    <button
-                      key={s}
-                      onClick={() => setSelectedSize(s)}
-                      className={`min-w-10 h-10 px-3 border text-[11px] uppercase font-medium transition-colors cursor-pointer ${
-                        currentSize === s
-                          ? "border-black bg-black text-white"
-                          : "border-black/20 text-black hover:border-black"
-                      }`}
-                    >
-                      {s}
-                    </button>
-                  ))}
-                </div>
+                {canCustomize && (
+                  <div className="mb-3 grid grid-cols-2 gap-2">
+                    <button type="button" onClick={() => { setSizeMode("standard"); setCustomSizeError(""); }} className={`border px-2 py-2 text-[10px] uppercase ${sizeMode === "standard" ? "border-black bg-black text-white" : "border-black/20"}`}>Standard</button>
+                    <button type="button" onClick={() => { setSizeMode("custom"); setCustomSizeError(""); }} className={`border px-2 py-2 text-[10px] uppercase ${sizeMode === "custom" ? "border-black bg-black text-white" : "border-black/20"}`}>Sur mesure (+2 j)</button>
+                  </div>
+                )}
+                {sizeMode === "standard" ? (
+                  <div className="flex flex-wrap gap-2">
+                    {quickViewProduct.sizes.map((s) => (
+                      <button
+                        key={s}
+                        onClick={() => setSelectedSize(s)}
+                        className={`min-w-10 h-10 px-3 border text-[11px] uppercase font-medium transition-colors cursor-pointer ${
+                          currentSize === s
+                            ? "border-black bg-black text-white"
+                            : "border-black/20 text-black hover:border-black"
+                        }`}
+                      >
+                        {s}
+                      </button>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="space-y-1.5">
+                    <textarea value={customDetails} onChange={(event) => { setCustomDetails(event.target.value); setCustomSizeError(""); }} rows={2} maxLength={1000} placeholder="Vos mesures et précisions" className="w-full resize-y border border-black/25 px-2.5 py-2 text-[11px] outline-none focus:border-black" />
+                    {customSizeError && <p className="text-[10px] text-red-700">{customSizeError}</p>}
+                  </div>
+                )}
               </div>
             )}
           </div>

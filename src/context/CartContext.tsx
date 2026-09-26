@@ -34,7 +34,7 @@ interface CartContextValue {
   closeSizeGuide: () => void;
   setIsSizeGuideOpen: (open: boolean) => void;
 
-  addToCart: (product: Product, qty?: number, size?: string, color?: string) => void;
+  addToCart: (product: Product, qty?: number, size?: string, color?: string, sizeMode?: "standard" | "custom", customDetails?: string) => void;
   removeFromCart: (productId: string, size?: string, color?: string) => void;
   updateQuantity: (productId: string, qty: number, size?: string, color?: string) => void;
   clearCart: () => void;
@@ -108,16 +108,19 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const openSizeGuide = () => setIsSizeGuideOpen(true);
   const closeSizeGuide = () => setIsSizeGuideOpen(false);
 
-  const addToCart = (product: Product, qty = 1, size?: string, color?: string) => {
-    const chosenSize = size || (product.sizes?.length > 0 ? product.sizes[0] : "Standard");
+  const addToCart = (product: Product, qty = 1, size?: string, color?: string, sizeMode: "standard" | "custom" = "standard", customDetails = "") => {
+    const chosenSize = sizeMode === "custom" ? "Sur mesure" : (size || (product.sizes?.length > 0 ? product.sizes[0] : "Standard"));
     const chosenColor = color || (product.colors?.length > 0 ? product.colors[0] : "Naturel");
+    const normalizedCustomDetails = sizeMode === "custom" ? customDetails.trim() : "";
 
     setCart((prev) => {
       const existingIndex = prev.findIndex(
         (i) =>
           String(i.product.id) === String(product.id) &&
           i.size === chosenSize &&
-          i.color === chosenColor
+          i.color === chosenColor &&
+          (i.sizeMode || "standard") === sizeMode &&
+          (i.customDetails || "") === normalizedCustomDetails
       );
       if (existingIndex > -1) {
         return prev.map((item, idx) =>
@@ -126,7 +129,14 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
             : item
         );
       }
-      return [...prev, { product, quantity: qty || 1, size: chosenSize, color: chosenColor }];
+      return [...prev, {
+        product,
+        quantity: qty || 1,
+        size: chosenSize,
+        color: chosenColor,
+        sizeMode,
+        customDetails: normalizedCustomDetails || undefined,
+      }];
     });
 
     setIsCartOpen(true);

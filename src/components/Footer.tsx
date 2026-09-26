@@ -55,7 +55,7 @@ const Footer: React.FC = () => {
                 <div className="flex flex-col gap-3 pb-5 text-[12px] text-black/65">
                   <Link to="/faq">Questions fréquentes (FAQ)</Link>
                   <Link to="/faq">Retours & échanges</Link>
-                  <Link to="/compte">Suivi de commande</Link>
+                  <Link to="/suivi-commande">Suivi de commande</Link>
                 </div>
               ),
             },
@@ -178,7 +178,7 @@ const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/compte" className="hover:text-white transition-colors">
+                <Link to="/suivi-commande" className="hover:text-white transition-colors">
                   Suivi de Commande
                 </Link>
               </li>

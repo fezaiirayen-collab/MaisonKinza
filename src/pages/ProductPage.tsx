@@ -30,6 +30,9 @@ const ProductPage: React.FC = () => {
   const { addToCart, toggleFavorite, isFavorite, openSizeGuide } = useCart();
 
   const [size, setSize] = useState("");
+  const [sizeMode, setSizeMode] = useState<"standard" | "custom">("standard");
+  const [customDetails, setCustomDetails] = useState("");
+  const [customSizeError, setCustomSizeError] = useState("");
   const [color, setColor] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [openAccordion, setOpenAccordion] = useState("craft");
@@ -55,7 +58,8 @@ const ProductPage: React.FC = () => {
     );
   }
 
-  const selectedSize = size || product.sizes[0] || "Standard";
+  const canCustomize = product.category.toLowerCase() === "robe";
+  const selectedSize = sizeMode === "custom" ? "Sur mesure" : (size || product.sizes[0] || "Standard");
   const selectedColor = color || product.colors[0] || "Naturel";
   const selectedColorImages = getImagesForColor(product, selectedColor);
   const fav = isFavorite(String(product.id));
@@ -65,6 +69,15 @@ const ProductPage: React.FC = () => {
 
   const toggleAccordion = (key: string) => {
     setOpenAccordion(openAccordion === key ? "" : key);
+  };
+
+  const handleAddToCart = () => {
+    if (sizeMode === "custom" && customDetails.trim().length < 10) {
+      setCustomSizeError("Ajoutez vos mesures ou vos précisions (10 caractères minimum).");
+      return;
+    }
+    setCustomSizeError("");
+    addToCart(product, quantity, selectedSize, selectedColor, sizeMode, customDetails);
   };
 
   return (
@@ -173,24 +186,62 @@ const ProductPage: React.FC = () => {
                 </button>
               </div>
 
-              <div className="flex flex-wrap gap-2">
-                {product.sizes.map((s) => {
-                  const isSelected = selectedSize === s;
-                  return (
-                    <button
-                      key={s}
-                      onClick={() => setSize(s)}
-                      className={`min-w-12 h-11 border px-3 text-[11px] font-medium transition-colors cursor-pointer ${
-                        isSelected
-                          ? "bg-black text-white border-black"
-                          : "border-black/20 text-black hover:border-black bg-transparent"
-                      }`}
-                    >
-                      {s}
-                    </button>
-                  );
-                })}
-              </div>
+              {canCustomize && (
+                <div className="mb-4 grid grid-cols-2 gap-2">
+                  <button
+                    type="button"
+                    onClick={() => { setSizeMode("standard"); setCustomSizeError(""); }}
+                    className={`border px-3 py-2.5 text-left text-[10px] uppercase tracking-[0.12em] transition-colors ${
+                      sizeMode === "standard" ? "border-black bg-black text-white" : "border-black/20 hover:border-black"
+                    }`}
+                  >
+                    Taille standard
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => { setSizeMode("custom"); setCustomSizeError(""); }}
+                    className={`border px-3 py-2.5 text-left text-[10px] uppercase tracking-[0.12em] transition-colors ${
+                      sizeMode === "custom" ? "border-black bg-black text-white" : "border-black/20 hover:border-black"
+                    }`}
+                  >
+                    Sur mesure <span className="block pt-0.5 text-[9px] normal-case tracking-normal opacity-70">+2 jours</span>
+                  </button>
+                </div>
+              )}
+
+              {sizeMode === "standard" ? (
+                <div className="flex flex-wrap gap-2">
+                  {product.sizes.map((s) => {
+                    const isSelected = selectedSize === s;
+                    return (
+                      <button
+                        key={s}
+                        onClick={() => setSize(s)}
+                        className={`min-w-12 h-11 border px-3 text-[11px] font-medium transition-colors cursor-pointer ${
+                          isSelected
+                            ? "bg-black text-white border-black"
+                            : "border-black/20 text-black hover:border-black bg-transparent"
+                        }`}
+                      >
+                        {s}
+                      </button>
+                    );
+                  })}
+                </div>
+              ) : (
+                <div className="space-y-2">
+                  <textarea
+                    value={customDetails}
+                    onChange={(event) => { setCustomDetails(event.target.value); setCustomSizeError(""); }}
+                    rows={3}
+                    maxLength={1000}
+                    placeholder="Indiquez vos mesures et précisions : poitrine, taille, hanches, longueur…"
+                    className="w-full resize-y border border-black/25 px-3 py-2.5 text-[12px] outline-none focus:border-black"
+                  />
+                  <p className="text-[10px] leading-relaxed text-stone">Notre atelier vous contactera pour confirmer les mesures. Le sur-mesure ajoute 2 jours au délai de livraison.</p>
+                  {customSizeError && <p className="text-[11px] text-red-700">{customSizeError}</p>}
+                </div>
+              )}
             </div>
 
             {/* 6. Couleurs */}
@@ -253,7 +304,7 @@ const ProductPage: React.FC = () => {
             <div className="space-y-3 mb-8">
               <Button
                 variant="solid"
-                onClick={() => addToCart(product, quantity, selectedSize, selectedColor)}
+                onClick={handleAddToCart}
                 className="w-full h-[52px] text-[11px] tracking-[0.16em]"
               >
                 <ShoppingBag size={16} strokeWidth={1.5} />

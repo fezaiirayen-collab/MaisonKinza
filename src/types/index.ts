@@ -34,6 +34,8 @@ export interface CartItem {
   quantity: number;
   size?: string;
   color?: string;
+  sizeMode?: "standard" | "custom";
+  customDetails?: string;
 }
 
 export interface ShippingAddress {
@@ -60,4 +62,5 @@ export interface Order {
   subtotal: number;
   discount: number;
   total: number;
+  deliveryDelayDays?: number;
 }

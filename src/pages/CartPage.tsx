@@ -120,6 +120,11 @@ const CartPage: React.FC = () => {
                         <p className="text-[10px] sm:text-[11px] text-stone uppercase tracking-wider mt-0.5">
                           {item.product.category} {item.size ? `• T: ${item.size}` : ""} {item.color ? `• ${item.color}` : ""}
                         </p>
+                        {item.sizeMode === "custom" && (
+                          <p className="mt-1 max-w-[280px] text-[10px] leading-relaxed text-stone">
+                            Sur mesure · +2 jours · {item.customDetails}
+                          </p>
+                        )}
                         <p className="text-[12px] sm:text-[13px] text-black font-semibold mt-1">
                           {item.product.price} TND
                         </p>

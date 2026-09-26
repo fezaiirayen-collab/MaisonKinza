@@ -118,6 +118,9 @@ const CartDrawer: React.FC = () => {
                       <p className="text-[11px] text-stone uppercase tracking-wider mt-0.5">
                         {item.product.category} {item.size ? `• Taille ${item.size}` : ""}
                       </p>
+                      {item.sizeMode === "custom" && (
+                        <p className="mt-1 text-[10px] leading-relaxed text-stone">Sur mesure · +2 jours</p>
+                      )}
                       <p className="text-[13px] text-black font-medium mt-1">
                         {item.product.price} TND
                       </p>

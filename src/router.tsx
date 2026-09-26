@@ -15,6 +15,7 @@ const CheckoutPage = lazy(() => import("@/pages/CheckoutPage"));
 const AboutPage = lazy(() => import("@/pages/AboutPage"));
 const ContactPage = lazy(() => import("@/pages/ContactPage"));
 const FaqPage = lazy(() => import("@/pages/FaqPage"));
+const TrackOrderPage = lazy(() => import("@/pages/TrackOrderPage"));
 
 const LocalAdminRedirect: React.FC = () => {
   useEffect(() => {
@@ -45,6 +46,8 @@ const router = createBrowserRouter(
       { path: "panier", element: <CartPage /> },
       { path: "cart", element: <Navigate to="/panier" replace /> },
       { path: "checkout", element: <CheckoutPage /> },
+      { path: "suivi-commande", element: <TrackOrderPage /> },
+      { path: "track-order", element: <TrackOrderPage /> },
 
       // Favorites
       { path: "favoris", element: <FavoritesPage /> },

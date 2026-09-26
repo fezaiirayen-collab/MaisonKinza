@@ -524,9 +524,12 @@ const AccountPage: React.FC = () => {
                   <h2 className="text-[12px] uppercase tracking-[0.16em] font-semibold text-black">
                     Historique de vos commandes
                   </h2>
-                  <button onClick={() => session && void loadOrders(session)} disabled={isLoadingOrders} className="inline-flex items-center gap-2 text-[10px] uppercase tracking-wider text-stone hover:text-black disabled:opacity-50">
-                    <RefreshCw size={13} className={isLoadingOrders ? "animate-spin" : ""} /> Actualiser
-                  </button>
+                  <div className="flex items-center gap-4">
+                    <Link to="/suivi-commande" className="text-[10px] uppercase tracking-wider text-stone hover:text-black">Suivre une référence</Link>
+                    <button onClick={() => session && void loadOrders(session)} disabled={isLoadingOrders} className="inline-flex items-center gap-2 text-[10px] uppercase tracking-wider text-stone hover:text-black disabled:opacity-50">
+                      <RefreshCw size={13} className={isLoadingOrders ? "animate-spin" : ""} /> Actualiser
+                    </button>
+                  </div>
                 </div>
                 {ordersError && <p className="border border-red-700 bg-red-50 p-3 text-[12px] text-red-800">{ordersError}</p>}
 
