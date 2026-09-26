@@ -525,7 +525,6 @@ const AccountPage: React.FC = () => {
                     Historique de vos commandes
                   </h2>
                   <div className="flex items-center gap-4">
-                    <Link to="/suivi-commande" className="text-[10px] uppercase tracking-wider text-stone hover:text-black">Suivre une référence</Link>
                     <button onClick={() => session && void loadOrders(session)} disabled={isLoadingOrders} className="inline-flex items-center gap-2 text-[10px] uppercase tracking-wider text-stone hover:text-black disabled:opacity-50">
                       <RefreshCw size={13} className={isLoadingOrders ? "animate-spin" : ""} /> Actualiser
                     </button>
