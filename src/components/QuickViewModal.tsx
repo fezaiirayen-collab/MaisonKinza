@@ -29,7 +29,7 @@ const QuickViewModal: React.FC = () => {
     (quickViewProduct.sizes && quickViewProduct.sizes.length > 0
       ? quickViewProduct.sizes[0]
       : "Standard"));
-  const canCustomize = quickViewProduct.category.toLowerCase().includes("robe");
+  const canCustomize = quickViewProduct.category.trim().toLowerCase() !== "accessoire" && quickViewProduct.category.trim().toLowerCase() !== "accessoires";
 
   const handleAddToCart = () => {
     if (sizeMode === "custom" && customDetails.trim().length < 10) {
@@ -108,7 +108,7 @@ const QuickViewModal: React.FC = () => {
             </p>
 
             {/* Size Selector */}
-            {quickViewProduct.sizes && quickViewProduct.sizes.length > 0 && (
+            {(canCustomize || (quickViewProduct.sizes && quickViewProduct.sizes.length > 0)) && (
               <div className="mb-6">
                 <span className="text-[11px] uppercase tracking-wider text-black font-medium block mb-2">
                   Taille : {currentSize}
