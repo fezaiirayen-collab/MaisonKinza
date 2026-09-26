@@ -89,7 +89,7 @@ const CategoryPage: React.FC<Props> = ({ category: propCategory }) => {
           <div className="absolute inset-0 flex items-end p-5 text-white sm:p-8 lg:p-12">
             <div>
               <p className="text-[10px] uppercase tracking-[0.2em] text-white/80 sm:text-[11px]">
-                ASALA — Collection {activeCategory}
+                KENZA — Collection {activeCategory}
               </p>
               <h1
                 className="mt-2 text-[32px] font-normal leading-none tracking-tight text-white sm:text-[48px] lg:text-[64px]"

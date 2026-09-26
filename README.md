@@ -1,4 +1,4 @@
-# ASALA
+# KENZA
 
 Boutique ASALA â€” site public React/Vite connectÃ© Ã  Supabase.
 
@@ -64,12 +64,12 @@ Dans `Settings > Pages`, choisir `GitHub Actions` comme source.
 
 Lâ€™URL du site est :
 
-`https://fezaiirayen-collab.github.io/ASALA1/`
+`https://fezaiirayen-collab.github.io/MaisonKinza/`
 
 Dans Supabase > Authentication > URL Configuration, autoriser au minimum :
 
 - `http://localhost:5173/reset-password`
-- `https://fezaiirayen-collab.github.io/ASALA1/reset-password`
+- `https://fezaiirayen-collab.github.io/MaisonKinza/reset-password`
 
 Le fichier `.env` et les clÃ©s privÃ©es sont exclus du dÃ©pÃ´t. Le dashboard admin doit Ãªtre publiÃ© dans un dÃ©pÃ´t privÃ© sÃ©parÃ©.
 

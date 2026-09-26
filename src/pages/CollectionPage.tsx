@@ -153,14 +153,14 @@ const CollectionPage: React.FC = () => {
         <div className="relative aspect-[16/9] min-h-[180px] overflow-hidden bg-[#f4f2ee] sm:aspect-[3/1] sm:min-h-[240px] lg:min-h-[320px]">
           <img
             src={publicAsset(bannerImage)}
-            alt={isNewArrivals ? "Nouveautés ASALA" : "Collection ASALA"}
+            alt={isNewArrivals ? "Nouveautés KENZA" : "Collection KENZA"}
             className="absolute inset-0 h-full w-full object-cover object-[65%_center] sm:object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/15 to-transparent" />
           <div className="absolute inset-0 flex items-end p-5 text-white sm:p-8 lg:p-12">
             <div>
               <p className="text-[10px] uppercase tracking-[0.2em] text-white/80 sm:text-[11px]">
-                ASALA — {isNewArrivals ? "Nouvelles créations" : "L'art du traditionnel"}
+                KENZA — {isNewArrivals ? "Nouvelles créations" : "L'art du traditionnel"}
               </p>
               <h1
                 className="mt-2 text-[28px] font-normal leading-none sm:text-[42px] lg:text-[58px]"
@@ -193,7 +193,7 @@ const CollectionPage: React.FC = () => {
               className="text-[28px] xs:text-[36px] sm:text-[48px] lg:text-[58px] font-normal leading-[1.02] text-black tracking-tight"
               style={{ fontFamily: '"Bodoni Moda", Georgia, serif' }}
             >
-              {isNewArrivals ? "LES NOUVEAUTÉS ASALA" : "LA COLLECTION ASALA"}
+              {isNewArrivals ? "LES NOUVEAUTÉS KENZA" : "LA COLLECTION KENZA"}
             </h1>
             <p className="mt-3 sm:mt-4 text-[12px] sm:text-[14px] leading-relaxed text-stone max-w-xl">
               Des pièces d'exception pensées pour accompagner les instants qui comptent : caftans brodés d'or, jebbas contemporaines, robes fluides et parures artisanales.

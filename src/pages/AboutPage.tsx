@@ -12,7 +12,7 @@ const AboutPage: React.FC = () => {
       <section className="relative flex h-[420px] w-full items-center justify-center overflow-hidden border-b border-black/10 bg-[#f4f2ee] sm:h-[500px] lg:h-[560px]">
         <ProductImage
           src={content.about_hero_image}
-          alt="Maison ASALA Savoir-faire"
+          alt="Maison KENZA Savoir-faire"
           className="absolute inset-0 h-full w-full object-cover object-top"
         />
         <div className="absolute inset-0 bg-black/40" />

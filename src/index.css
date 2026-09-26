@@ -1,4 +1,4 @@
-/* src/index.css — ASALA Editorial Design System */
+/* src/index.css — KENZA Editorial Design System */
 @import "tailwindcss";
 
 @theme {
@@ -177,7 +177,7 @@ textarea:focus {
   margin-top: 12px;
 }
 
-/* ─── Standard ASALA Button (Item 20 in Spec) ─────────────────────── */
+/* ─── Standard KENZA Button (Item 20 in Spec) ─────────────────────── */
 .asala-btn {
   display: inline-flex;
   align-items: center;

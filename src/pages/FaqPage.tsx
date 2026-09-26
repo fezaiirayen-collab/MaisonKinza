@@ -20,7 +20,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Proposez-vous la confection sur-mesure pour les mariées et cérémonies ?",
-    a: "Oui, notre atelier de Tunis réalise des créations sur-mesure pour mariages, fiançailles et galas. Contactez-nous par téléphone au +216 71 000 000 ou par email à contact@asala.tn pour convenir d'un rendez-vous privé.",
+    a: "Oui, notre atelier de Tunis réalise des créations sur-mesure pour mariages, fiançailles et galas. Contactez-nous par téléphone au +216 71 000 000 ou par email à contact@kenza.tn pour convenir d'un rendez-vous privé.",
   },
   {
     q: "Comment entretenir mon caftan ou ma takchita brodée au fil d'or ?",

@@ -17,7 +17,7 @@ const Logo: React.FC<Props> = ({ className = "", size = "md", inverted = false }
     <Link
       to="/"
       className={`inline-flex flex-col items-center justify-center leading-none group transition-opacity hover:opacity-75 select-none shrink-0 ${className}`}
-      aria-label={`${isHomePage ? "KINZA" : "ASALA"} Maison de Couture - Accueil`}
+      aria-label="KENZA Maison de Couture - Accueil"
     >
       <span
         className={`font-didone font-normal tracking-wide ${colorClass}`}
@@ -28,7 +28,7 @@ const Logo: React.FC<Props> = ({ className = "", size = "md", inverted = false }
           display: isHomePage ? "none" : undefined,
         }}
       >
-        أصالة
+        كنزة
       </span>
       <span
         className={`font-didone font-normal tracking-wide ${colorClass}`}
@@ -39,7 +39,7 @@ const Logo: React.FC<Props> = ({ className = "", size = "md", inverted = false }
           display: isHomePage ? undefined : "none",
         }}
       >
-        KINZA
+        KENZA
       </span>
       <span
         className={`font-sans font-medium uppercase mt-1 ${colorClass}`}
@@ -50,7 +50,7 @@ const Logo: React.FC<Props> = ({ className = "", size = "md", inverted = false }
           lineHeight: 1,
         }}
       >
-        {isHomePage ? "MAISON KINZA" : "ASALA"}
+        MAISON KENZA
       </span>
     </Link>
   );

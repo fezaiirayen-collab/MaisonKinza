@@ -22,7 +22,7 @@ const defaultLinks = [
 const MobileMenu: React.FC<Props> = ({ isOpen, onClose, links = defaultLinks }) => {
   const { openSearch, favorites } = useCart();
   const isHomePage = useLocation().pathname === "/";
-  const contactEmail = isHomePage ? "contact@kinza.tn" : "contact@asala.tn";
+  const contactEmail = "contact@kenza.tn";
   const phone = isHomePage ? "+216 52 374 459" : "+216 71 000 000";
 
   if (!isOpen) return null;

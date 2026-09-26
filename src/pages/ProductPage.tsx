@@ -321,7 +321,7 @@ const ProductPage: React.FC = () => {
                 onToggle={() => toggleAccordion("delivery")}
               >
                 <p className="text-[13px] text-stone leading-relaxed">
-                  Livraison partout en Tunisie à 7 TND. Expédition soignée dans son coffret protecteur ASALA. Délais moyens : 24 à 48h sur le Grand Tunis, 48 à 72h sur le reste du pays.
+                  Livraison partout en Tunisie à 7 TND. Expédition soignée dans son coffret protecteur KENZA. Délais moyens : 24 à 48h sur le Grand Tunis, 48 à 72h sur le reste du pays.
                 </p>
               </Accordion>
 

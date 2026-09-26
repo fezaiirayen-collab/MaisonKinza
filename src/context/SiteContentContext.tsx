@@ -33,23 +33,23 @@ const defaultContent: SiteContentValues = {
   home_occasion_title: "L'ART DE LA JEBBA",
   home_occasion_description: "Mariages, fiançailles et célébrations prestigieuses.",
   about_hero_image: "/hero-model.jpg",
-  about_hero_eyebrow: "Maison ASALA",
-  about_hero_title: "LA MAISON ASALA",
+  about_hero_eyebrow: "Maison KENZA",
+  about_hero_title: "LA MAISON KENZA",
   about_hero_description: "L'héritage de la haute couture tunisienne sublimé dans une modernité intemporelle.",
   about_intro_eyebrow: "Origines & Philosophie",
   about_intro_title: "NOTRE HISTOIRE & NOTRE VISION",
-  about_intro_paragraph_1: "Fondée à Tunis, la Maison ASALA — signifiant authenticité et noblesse d'origine en arabe — est née d'une passion inconditionnelle pour le patrimoine vestimentaire tunisien et méditerranéen.",
-  about_intro_paragraph_2: "Face à l'uniformisation de la mode mondiale, ASALA propose une vision singulière : des créations de grand apparat et des silhouettes quotidiennes qui célèbrent la richesse des broderies tunisiennes, la pureté des lins naturels et la splendeur des soies les plus précieuses.",
+  about_intro_paragraph_1: "Fondée à Tunis, la Maison KENZA — signifiant authenticité et noblesse d'origine en arabe — est née d'une passion inconditionnelle pour le patrimoine vestimentaire tunisien et méditerranéen.",
+  about_intro_paragraph_2: "Face à l'uniformisation de la mode mondiale, KENZA propose une vision singulière : des créations de grand apparat et des silhouettes quotidiennes qui célèbrent la richesse des broderies tunisiennes, la pureté des lins naturels et la splendeur des soies les plus précieuses.",
   about_work_image: "/hero-model.jpg",
   about_work_eyebrow: "Transmission Artisanale",
   about_work_title: "L'ATELIER DE TUNIS",
   about_work_paragraph_1: "Chaque caftan, chaque jebba et chaque takchita est façonné au cœur de nos ateliers par des maîtresses artisanes détentrices d'un savoir-faire séculaire.",
-  about_work_paragraph_2: "Le travail minutieux du fil d'or, la pose des boutons driba réalisés un à un à la main, et la précision des coupes architecturales confèrent à chaque création ASALA une noblesse incomparable.",
+  about_work_paragraph_2: "Le travail minutieux du fil d'or, la pose des boutons driba réalisés un à un à la main, et la précision des coupes architecturales confèrent à chaque création KENZA une noblesse incomparable.",
   about_work_button_label: "Découvrir la collection",
   about_work_button_url: "/collection",
   home_hero_01_image: "/hero-slide-01.png",
   home_hero_01_tagline: "TRADITION — ÉLÉGANCE — INTEMPORALITÉ",
-  home_hero_01_arabic_title: "أصالة",
+  home_hero_01_arabic_title: "كنزة",
   home_hero_01_title_line_1: "L'ART DU",
   home_hero_01_title_line_2: "TRADITIONNEL",
   home_hero_01_description: "Des pièces intemporelles, pensées pour aujourd'hui.\nL'héritage de la couture tunisienne sublimé dans une esthétique contemporaine.",
@@ -57,7 +57,7 @@ const defaultContent: SiteContentValues = {
   home_hero_01_button_url: "/collection",
   home_hero_02_image: "/hero-slide-02.png",
   home_hero_02_tagline: "ÉDITION JEBBA — HAUTE COUTURE",
-  home_hero_02_arabic_title: "أصالة",
+  home_hero_02_arabic_title: "كنزة",
   home_hero_02_title_line_1: "SPLENDEUR",
   home_hero_02_title_line_2: "& MAJESTÉ",
   home_hero_02_description: "L'art de la jebba et du caftan d'apparat.\nBroderies au fil d'or et soies d'art pour vos célébrations les plus précieuses.",
@@ -65,7 +65,7 @@ const defaultContent: SiteContentValues = {
   home_hero_02_button_url: "/jebbas",
   home_hero_03_image: "/hero-slide-03.png",
   home_hero_03_tagline: "L'ESSENCE DU LIN — CRÉATION ARTISANALE",
-  home_hero_03_arabic_title: "أصالة",
+  home_hero_03_arabic_title: "كنزة",
   home_hero_03_title_line_1: "LA JEBBA",
   home_hero_03_title_line_2: "RÉINVENTÉE",
   home_hero_03_description: "Lignes fluides, pureté des matières et finitions cousues main.\nLa noblesse de la jebba tunisienne dans son expression moderne.",
@@ -86,10 +86,12 @@ const defaultSections: HomeSection[] = [{
 }];
 
 const defaultCollectionTiles: CollectionTile[] = [
-  { id: "default-caftans", eyebrow: "La Signature ASALA", title: "CAFTANS", imageUrl: "/home-caftans.jpg", buttonLabel: "Découvrir", categorySlug: "caftans", sortOrder: 1 },
+  { id: "default-caftans", eyebrow: "La Signature KENZA", title: "CAFTANS", imageUrl: "/home-caftans.jpg", buttonLabel: "Découvrir", categorySlug: "caftans", sortOrder: 1 },
   { id: "default-jebbas", eyebrow: "Lins d'Exception", title: "JEBBAS", imageUrl: "/home-jebbas.png", buttonLabel: "Explorer", categorySlug: "jebbas", sortOrder: 2 },
   { id: "default-robes", eyebrow: "Lignes Fluides", title: "ROBES", imageUrl: "/home-robes.jpg", buttonLabel: "Explorer", categorySlug: "robes", sortOrder: 3 },
 ];
+
+const replaceBrand = (value: string) => value.replace(/ASALA|KINZA/gi, "KENZA").replaceAll("أصالة", "كنزة");
 
 type SiteContentContextValue = { content: SiteContentValues; homeSections: HomeSection[]; collectionTiles: CollectionTile[] };
 
@@ -123,18 +125,18 @@ export const SiteContentProvider: React.FC<React.PropsWithChildren> = ({ childre
     if (contentResult.data) {
       setContent({
         ...defaultContent,
-        ...Object.fromEntries(contentResult.data.map((item) => [item.content_key, item.value])),
+        ...Object.fromEntries(contentResult.data.map((item) => [item.content_key, replaceBrand(item.value)])),
       });
     }
     if (!sectionsResult.error && sectionsResult.data) {
       setHomeSections(sectionsResult.data.map((item) => ({
         id: item.id,
-        eyebrow: item.eyebrow || "",
-        title: item.title || "",
-        subtitle: item.subtitle || "",
-        description: item.description || "",
+        eyebrow: replaceBrand(item.eyebrow || ""),
+        title: replaceBrand(item.title || ""),
+        subtitle: replaceBrand(item.subtitle || ""),
+        description: replaceBrand(item.description || ""),
         imageUrl: item.image_url || "/hero-model.jpg",
-        buttonLabel: item.button_label || "Découvrir la collection",
+        buttonLabel: replaceBrand(item.button_label || "Découvrir la collection"),
         categorySlug: item.category_slug || "",
         sortOrder: Number(item.sort_order || 0),
       })));
@@ -142,10 +144,10 @@ export const SiteContentProvider: React.FC<React.PropsWithChildren> = ({ childre
     if (!tilesResult.error && tilesResult.data) {
       setCollectionTiles(tilesResult.data.map((item) => ({
         id: item.id,
-        eyebrow: item.eyebrow || "",
-        title: item.title || "",
+        eyebrow: replaceBrand(item.eyebrow || ""),
+        title: replaceBrand(item.title || ""),
         imageUrl: item.image_url || "/hero-model.jpg",
-        buttonLabel: item.button_label || "Découvrir",
+        buttonLabel: replaceBrand(item.button_label || "Découvrir"),
         categorySlug: item.category_slug || "",
         sortOrder: Number(item.sort_order || 0),
       })));

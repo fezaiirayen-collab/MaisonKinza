@@ -52,7 +52,7 @@ const SearchOverlay: React.FC = () => {
           {/* Top Label and Close */}
           <div className="flex items-center justify-between pb-6">
             <span className="text-[11px] uppercase tracking-[0.16em] text-stone font-medium">
-              Recherche Éditoriale ASALA
+              Recherche Éditoriale KENZA
             </span>
             <button
               onClick={closeSearch}

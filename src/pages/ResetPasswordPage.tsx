@@ -74,7 +74,7 @@ const ResetPasswordPage: React.FC = () => {
           <h1 className="mt-2 text-[34px] uppercase tracking-tight" style={{ fontFamily: '"Bodoni Moda", Georgia, serif' }}>
             NOUVEAU MOT DE PASSE
           </h1>
-          <p className="mt-2 text-[12px] text-stone">Choisissez un nouveau mot de passe pour votre compte ASALA.</p>
+          <p className="mt-2 text-[12px] text-stone">Choisissez un nouveau mot de passe pour votre compte KENZA.</p>
         </div>
       </section>
 

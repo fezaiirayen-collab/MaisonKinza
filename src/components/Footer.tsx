@@ -11,10 +11,10 @@ const Footer: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [openMobileSection, setOpenMobileSection] = useState<string | null>(null);
   const isHomePage = useLocation().pathname === "/";
-  const brandName = isHomePage ? "KINZA" : "ASALA";
+  const brandName = "KENZA";
   const phone = isHomePage ? "+216 52 374 459" : "+216 71 000 000";
   const phoneHref = phone.replace(/\s/g, "");
-  const contactEmail = isHomePage ? "contact@kinza.tn" : "contact@asala.tn";
+  const contactEmail = "contact@kenza.tn";
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -107,7 +107,7 @@ const Footer: React.FC = () => {
         {/* Main 5 columns grid */}
         <div className="hidden grid-cols-1 gap-10 border-b border-white/15 pb-16 md:grid md:grid-cols-2 lg:grid-cols-5 lg:gap-8">
           
-          {/* Col 1: ASALA Brandmark & Vision */}
+          {/* Col 1: KENZA Brandmark & Vision */}
           <div className="lg:col-span-1">
             <div className="mb-5">
               <Logo size="md" inverted />

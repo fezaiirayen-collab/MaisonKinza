@@ -19,7 +19,7 @@ const slides: Slide[] = [
   {
     id: "01",
     tagline: "TRADITION — ÉLÉGANCE — INTEMPORALITÉ",
-    arabicTitle: "أصالة",
+    arabicTitle: "كنزة",
     titleLines: ["L'ART DU", "TRADITIONNEL"],
     description:
       "Des pièces intemporelles, pensées pour aujourd’hui.\nL’héritage de la couture tunisienne sublimé dans une esthétique contemporaine.",
@@ -30,7 +30,7 @@ const slides: Slide[] = [
   {
     id: "02",
     tagline: "ÉDITION JEBBA — HAUTE COUTURE",
-    arabicTitle: "أصالة",
+    arabicTitle: "كنزة",
     titleLines: ["SPLENDEUR", "& MAJESTÉ"],
     description:
       "L’art de la jebba et du caftan d’apparat.\nBroderies au fil d'or et soies d'art pour vos célébrations les plus précieuses.",
@@ -41,7 +41,7 @@ const slides: Slide[] = [
   {
     id: "03",
     tagline: "L'ESSENCE DU LIN — CRÉATION ARTISANALE",
-    arabicTitle: "أصالة",
+    arabicTitle: "كنزة",
     titleLines: ["LA JEBBA", "RÉINVENTÉE"],
     description:
       "Lignes fluides, pureté des matières et finitions cousues main.\nLa noblesse de la jebba tunisienne dans son expression moderne.",
@@ -90,7 +90,7 @@ const Hero: React.FC = () => {
           <img
             key={slide.image}
             src={publicAsset(slide.image)}
-            alt="Collection KINZA Mode Traditionnelle"
+            alt="Collection KENZA Mode Traditionnelle"
             fetchPriority="high"
             decoding="async"
             className={`hero-slide-image hero-slide-${slide.id} absolute inset-0 !h-full !w-full object-cover transition-opacity duration-700`}
@@ -109,7 +109,7 @@ const Hero: React.FC = () => {
             {/* 1. En-tête */}
             <header className="hero-header">
               <p className="hero-tagline">{slide.tagline}</p>
-              <div className="hero-mark">KINZA</div>
+              <div className="hero-mark">KENZA</div>
               <h1 className="hero-title">
                 {slide.titleLines[0]}
                 <br />

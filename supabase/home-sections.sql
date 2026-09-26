@@ -60,18 +60,18 @@ on conflict (content_key) do nothing;
 insert into public.site_content (content_key, label, value, type)
 values
   ('about_hero_image', 'À propos — Image principale', '/hero-model.jpg', 'image'),
-  ('about_hero_eyebrow', 'À propos — Surtitre principal', 'Maison ASALA', 'text'),
-  ('about_hero_title', 'À propos — Titre principal', 'LA MAISON ASALA', 'text'),
+  ('about_hero_eyebrow', 'À propos — Surtitre principal', 'Maison KENZA', 'text'),
+  ('about_hero_title', 'À propos — Titre principal', 'LA MAISON KENZA', 'text'),
   ('about_hero_description', 'À propos — Description principale', 'L''héritage de la haute couture tunisienne sublimé dans une modernité intemporelle.', 'text'),
   ('about_intro_eyebrow', 'À propos — Surtitre histoire', 'Origines & Philosophie', 'text'),
   ('about_intro_title', 'À propos — Titre histoire', 'NOTRE HISTOIRE & NOTRE VISION', 'text'),
-  ('about_intro_paragraph_1', 'À propos — Histoire paragraphe 1', 'Fondée à Tunis, la Maison ASALA — signifiant authenticité et noblesse d''origine en arabe — est née d''une passion inconditionnelle pour le patrimoine vestimentaire tunisien et méditerranéen.', 'text'),
-  ('about_intro_paragraph_2', 'À propos — Histoire paragraphe 2', 'Face à l''uniformisation de la mode mondiale, ASALA propose une vision singulière : des créations de grand apparat et des silhouettes quotidiennes qui célèbrent la richesse des broderies tunisiennes, la pureté des lins naturels et la splendeur des soies les plus précieuses.', 'text'),
+  ('about_intro_paragraph_1', 'À propos — Histoire paragraphe 1', 'Fondée à Tunis, la Maison KENZA — signifiant authenticité et noblesse d''origine en arabe — est née d''une passion inconditionnelle pour le patrimoine vestimentaire tunisien et méditerranéen.', 'text'),
+  ('about_intro_paragraph_2', 'À propos — Histoire paragraphe 2', 'Face à l''uniformisation de la mode mondiale, KENZA propose une vision singulière : des créations de grand apparat et des silhouettes quotidiennes qui célèbrent la richesse des broderies tunisiennes, la pureté des lins naturels et la splendeur des soies les plus précieuses.', 'text'),
   ('about_work_image', 'À propos — Image atelier', '/hero-model.jpg', 'image'),
   ('about_work_eyebrow', 'À propos — Surtitre atelier', 'Transmission Artisanale', 'text'),
   ('about_work_title', 'À propos — Titre atelier', 'L''ATELIER DE TUNIS', 'text'),
   ('about_work_paragraph_1', 'À propos — Atelier paragraphe 1', 'Chaque caftan, chaque jebba et chaque takchita est façonné au cœur de nos ateliers par des maîtresses artisanes détentrices d''un savoir-faire séculaire.', 'text'),
-  ('about_work_paragraph_2', 'À propos — Atelier paragraphe 2', 'Le travail minutieux du fil d''or, la pose des boutons driba réalisés un à un à la main, et la précision des coupes architecturales confèrent à chaque création ASALA une noblesse incomparable.', 'text'),
+  ('about_work_paragraph_2', 'À propos — Atelier paragraphe 2', 'Le travail minutieux du fil d''or, la pose des boutons driba réalisés un à un à la main, et la précision des coupes architecturales confèrent à chaque création KENZA une noblesse incomparable.', 'text'),
   ('about_work_button_label', 'À propos — Texte du bouton', 'Découvrir la collection', 'text'),
   ('about_work_button_url', 'À propos — Lien du bouton', '/collection', 'url')
 on conflict (content_key) do nothing;
@@ -121,7 +121,7 @@ create table if not exists public.home_collection_tiles (
 insert into public.home_collection_tiles
   (eyebrow, title, image_url, button_label, category_slug, sort_order)
 select * from (values
-  ('La Signature ASALA', 'CAFTANS', '/home-caftans.jpg', 'Découvrir', 'caftans', 1),
+  ('La Signature KENZA', 'CAFTANS', '/home-caftans.jpg', 'Découvrir', 'caftans', 1),
   ('Lins d''Exception', 'JEBBAS', '/home-jebbas.png', 'Explorer', 'jebbas', 2),
   ('Lignes Fluides', 'ROBES', '/home-robes.jpg', 'Explorer', 'robes', 3)
 ) as defaults(eyebrow, title, image_url, button_label, category_slug, sort_order)

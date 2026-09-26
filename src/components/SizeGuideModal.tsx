@@ -29,7 +29,7 @@ const SizeGuideModal: React.FC = () => {
           className="text-[24px] uppercase tracking-wide text-black mb-1 font-normal"
           style={{ fontFamily: '"Bodoni Moda", Georgia, serif' }}
         >
-          GUIDE DES TAILLES ASALA
+          GUIDE DES TAILLES KENZA
         </h3>
         <p className="text-[11px] text-stone uppercase tracking-[0.14em] mb-6">
           Mesures indicatives en centimètres pour caftans, takchitas & jebbas
@@ -90,7 +90,7 @@ const SizeGuideModal: React.FC = () => {
           <p className="font-semibold text-black uppercase tracking-wider">Confection Sur-Mesure :</p>
           <p className="leading-relaxed">
             Toutes nos créations de grand apparat et robes de cérémonie peuvent être ajustées ou confectionnées sur-mesure dans nos ateliers à Tunis. Contactez notre service conciergerie :
-            <span className="font-medium text-black"> contact@asala.tn</span> ou <span className="font-medium text-black">+216 71 000 000</span>.
+            <span className="font-medium text-black"> contact@kenza.tn</span> ou <span className="font-medium text-black">+216 71 000 000</span>.
           </p>
         </div>
       </div>

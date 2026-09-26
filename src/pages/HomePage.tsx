@@ -123,13 +123,13 @@ const HomePage: React.FC = () => {
             >
               <ProductImage
                 src="/home-caftans.jpg"
-                alt="Collection Caftans KINZA"
+                alt="Collection Caftans KENZA"
                 className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 text-white">
                 <p className="text-[10px] uppercase tracking-[0.2em] text-white/80 font-medium">
-                  La Signature KINZA
+                  La Signature KENZA
                 </p>
                 <h3
                   className="text-[28px] sm:text-[38px] font-normal leading-tight mt-1"
@@ -150,7 +150,7 @@ const HomePage: React.FC = () => {
             >
               <ProductImage
                 src="/home-jebbas.png"
-                alt="Collection Jebbas KINZA"
+                alt="Collection Jebbas KENZA"
                 className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
@@ -176,7 +176,7 @@ const HomePage: React.FC = () => {
             >
               <ProductImage
                 src="/home-robes.jpg"
-                alt="Collection Robes KINZA"
+                alt="Collection Robes KENZA"
                 className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
@@ -331,7 +331,7 @@ const HomePage: React.FC = () => {
       <section className="home-section relative min-h-[460px] sm:min-h-[540px] lg:min-h-[640px] flex items-center justify-center overflow-hidden bg-black text-white">
         <ProductImage
           src={content.home_occasion_image}
-          alt="Collection Jebbas Haute Couture KINZA"
+          alt="Collection Jebbas Haute Couture KENZA"
           loading="lazy"
           className="absolute inset-0 w-full h-full object-cover opacity-50"
         />
@@ -360,13 +360,13 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. NEWSLETTER — LA LETTRE KINZA */}
+      {/* 7. NEWSLETTER — LA LETTRE KENZA */}
       <section className="home-section py-14 sm:py-20 bg-[#f8f7f5] border-b border-black/10">
         <div className="asala-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
             <div className="lg:col-span-5">
               <p className="text-[10px] sm:text-[11px] uppercase tracking-[0.16em] text-stone font-medium">
-                La Lettre KINZA
+                La Lettre KENZA
               </p>
               <h2
                 className="text-[24px] xs:text-[28px] sm:text-[38px] font-normal leading-tight text-black mt-2"
@@ -383,7 +383,7 @@ const HomePage: React.FC = () => {
               {subscribed ? (
                 <div className="flex items-center gap-3 p-4 border border-black bg-white text-black text-[13px]">
                   <Check size={16} strokeWidth={2} />
-                  <span>Votre inscription a bien été enregistrée. Bienvenue chez KINZA.</span>
+                  <span>Votre inscription a bien été enregistrée. Bienvenue chez KENZA.</span>
                 </div>
               ) : (
                 <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
