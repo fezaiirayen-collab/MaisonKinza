@@ -36,7 +36,7 @@ const slides: Slide[] = [
       "L’art de la jebba et du caftan d’apparat.\nBroderies au fil d'or et soies d'art pour vos célébrations les plus précieuses.",
     ctaText: "Explorer les jebbas",
     ctaLink: "/jebbas",
-    image: "/hero-slide-02.png",
+    image: "/hero-slide-02-kenza.jpg",
   },
   {
     id: "03",
