@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useCart } from "@/context/CartContext";
 import { useSiteContent } from "@/context/SiteContentContext";
 import ProductImage from "@/components/ProductImage";
+import { getProductImageForColor } from "@/lib/product-images";
 import { calculateShippingFee } from "@/lib/shipping";
 
 const CartDrawer: React.FC = () => {
@@ -90,7 +91,7 @@ const CartDrawer: React.FC = () => {
                 >
                   <div className="h-24 w-20 shrink-0 overflow-hidden bg-[#f4f2ee]">
                     <ProductImage
-                      src={item.product.images[0]}
+                      src={getProductImageForColor(item.product, item.color)}
                       alt={item.product.name}
                       className="!h-full !w-full object-cover object-center"
                     />

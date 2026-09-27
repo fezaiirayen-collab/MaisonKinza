@@ -4,6 +4,7 @@ import { Trash2, Plus, Minus, ArrowRight, ShoppingBag, ArrowLeft, Tag, Check } f
 import { useCart } from "@/context/CartContext";
 import { useSiteContent } from "@/context/SiteContentContext";
 import ProductImage from "@/components/ProductImage";
+import { getProductImageForColor } from "@/lib/product-images";
 import Button, { ButtonLink } from "@/components/Button";
 import { calculateShippingFee } from "@/lib/shipping";
 
@@ -105,7 +106,7 @@ const CartPage: React.FC = () => {
                     <div className="flex gap-3 sm:gap-4 items-center">
                       <div className="w-16 h-[84px] sm:w-20 sm:h-[104px] bg-[#f4f2ee] shrink-0 overflow-hidden">
                         <ProductImage
-                          src={item.product.images[0]}
+                          src={getProductImageForColor(item.product, item.color)}
                           alt={item.product.name}
                           className="!h-full !w-full object-cover"
                         />
