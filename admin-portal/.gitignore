@@ -3,6 +3,4 @@ dist/
 .env
 .env.*
 !.env.example
-.DS_Store
 *.local
-image-test-output/

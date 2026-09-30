@@ -19,10 +19,11 @@ const TrackOrderPage = lazy(() => import("@/pages/TrackOrderPage"));
 
 const LocalAdminRedirect: React.FC = () => {
   useEffect(() => {
-    if (import.meta.env.DEV) window.location.replace("http://localhost:5174/");
+    const adminUrl = import.meta.env.DEV
+      ? "http://localhost:5174/"
+      : `${import.meta.env.BASE_URL}vrai-admin/`;
+    window.location.replace(adminUrl);
   }, []);
-
-  if (!import.meta.env.DEV) return <Navigate to="/" replace />;
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#f4f2ee] text-[12px] uppercase tracking-[0.14em] text-stone">
