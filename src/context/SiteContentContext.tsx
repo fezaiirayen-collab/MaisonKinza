@@ -91,7 +91,7 @@ const defaultCollectionTiles: CollectionTile[] = [
   { id: "default-robes", eyebrow: "Lignes Fluides", title: "ROBES", imageUrl: "/home-robes.jpg", buttonLabel: "Explorer", categorySlug: "robes", sortOrder: 3 },
 ];
 
-const replaceBrand = (value: string) => value.replace(/ASALA|KINZA/gi, "KENZA").replaceAll("أصالة", "كنزة");
+const replaceBrand = (value: string) => value.replace(/ASALA|KINZA/gi, "Maison Kenza").replaceAll("أصالة", "كنزة");
 
 type SiteContentContextValue = { content: SiteContentValues; homeSections: HomeSection[]; collectionTiles: CollectionTile[] };
 

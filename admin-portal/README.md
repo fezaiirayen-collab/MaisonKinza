@@ -1,6 +1,6 @@
-# ASALA — Admin Portal
+# Maison Kenza — Admin Portal
 
-Projet séparé du site public ASALA. Ce dossier doit être publié dans un dépôt GitHub privé.
+Portail d’administration de Maison Kenza, publié sous `/MaisonKinza/vrai-admin/` sur GitHub Pages.
 
 ## Installation
 

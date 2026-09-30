@@ -225,7 +225,7 @@ const emptyHomeSection: HomeSectionForm = {
   sort_order: 1,
 };
 const emptyCollectionTile: CollectionTileForm = {
-  eyebrow: "La Signature ASALA",
+  eyebrow: "La Signature Maison Kenza",
   title: "",
   image_url: "",
   button_label: "Découvrir",
@@ -796,7 +796,7 @@ const AdminDashboard: React.FC<{ session: Session; onSignOut: () => void }> = ({
       <header className="border-b border-black bg-white">
         <div className="mx-auto flex max-w-[1700px] items-center justify-between gap-4 px-4 py-4 sm:px-10 lg:px-20">
           <div>
-            <p className="text-[10px] uppercase tracking-[0.2em] text-stone">ASALA / ESPACE PRIVÉ</p>
+            <p className="text-[10px] uppercase tracking-[0.2em] text-stone">MAISON KENZA / ESPACE PRIVÉ</p>
             <h1 className="text-[27px] leading-tight sm:text-[34px]" style={{ fontFamily: '"Bodoni Moda", Georgia, serif' }}>Tableau de bord</h1>
             <p className="mt-1 text-[11px] text-stone">{session.user.email}</p>
           </div>
@@ -1222,7 +1222,7 @@ const ContentPanel: React.FC<ContentPanelProps> = ({ content, sections, tiles, c
       </div>
 
       <form onSubmit={onTileSubmit} className="mt-5 grid gap-4 md:grid-cols-2">
-        <Field label="Surtitre"><input value={tileForm.eyebrow} onChange={(event) => setTileForm((current) => ({ ...current, eyebrow: event.target.value }))} className="w-full" placeholder="La Signature ASALA" /></Field>
+        <Field label="Surtitre"><input value={tileForm.eyebrow} onChange={(event) => setTileForm((current) => ({ ...current, eyebrow: event.target.value }))} className="w-full" placeholder="La Signature Maison Kenza" /></Field>
         <Field label="Titre"><input required value={tileForm.title} onChange={(event) => setTileForm((current) => ({ ...current, title: event.target.value }))} className="w-full" placeholder="CAFTANS" /></Field>
         <Field label="Image URL"><input value={tileForm.image_url} onChange={(event) => setTileForm((current) => ({ ...current, image_url: event.target.value }))} className="w-full" placeholder="/home-caftans.jpg" /></Field>
         <Field label="Catégorie du bouton"><select value={tileForm.category_slug} onChange={(event) => setTileForm((current) => ({ ...current, category_slug: event.target.value }))} className="w-full"><option value="">Collection générale</option>{categories.filter((category) => category.is_active).map((category) => <option key={category.id} value={category.slug}>{category.name} → /{category.slug}</option>)}</select></Field>

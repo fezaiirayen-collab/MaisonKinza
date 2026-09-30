@@ -85,7 +85,7 @@ const AdminPage: React.FC = () => {
       <div className="w-full max-w-md border border-black bg-white p-6 sm:p-9">
         <div className="mb-8 flex items-center justify-between border-b border-black/10 pb-5">
           <div>
-            <p className="text-[11px] uppercase tracking-[0.2em] text-stone">ASALA</p>
+            <p className="text-[11px] uppercase tracking-[0.2em] text-stone">MAISON KENZA</p>
             <h1 className="mt-1 text-3xl" style={{ fontFamily: '"Bodoni Moda", Georgia, serif' }}>
               Administration
             </h1>
