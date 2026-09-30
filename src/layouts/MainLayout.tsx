@@ -4,6 +4,7 @@ import { Outlet, ScrollRestoration } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import HubSpotPageViewTracker from "@/components/HubSpotPageViewTracker";
 import { useCart } from "@/context/CartContext";
 
 const SearchOverlay = lazy(() => import("@/components/SearchOverlay"));
@@ -16,6 +17,7 @@ const MainLayout: React.FC = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-white text-black selection:bg-black selection:text-white">
+      <HubSpotPageViewTracker />
       <ScrollRestoration />
 
       {/* Top announcement bar */}
