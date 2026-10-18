@@ -182,6 +182,7 @@ textarea:focus {
   --new-arrivals-gap: 16px;
   position: relative;
   min-width: 0;
+  container-type: inline-size;
 }
 
 .new-arrivals-carousel__viewport {
@@ -207,28 +208,33 @@ textarea:focus {
 }
 
 .new-arrivals-carousel__controls {
+  position: absolute;
+  z-index: 10;
+  top: 31.25cqw;
+  right: 0;
+  left: 0;
   display: flex;
-  justify-content: flex-end;
-  gap: 8px;
-  margin-top: 22px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+  pointer-events: none;
 }
 
 .new-arrivals-carousel__controls button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  background: #ffffff;
-  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+  width: 30px;
+  height: 30px;
+  color: #000000;
+  pointer-events: auto;
+  transition: color 200ms ease, transform 200ms ease;
 }
 
 .new-arrivals-carousel__controls button:hover,
 .new-arrivals-carousel__controls button:focus-visible {
-  border-color: #000000;
-  background: #000000;
-  color: #ffffff;
+  color: #757575;
+  transform: scale(1.15);
   outline: none;
 }
 
@@ -236,11 +242,19 @@ textarea:focus {
   .new-arrivals-carousel {
     --new-arrivals-gap: 20px;
   }
+
+  .new-arrivals-carousel__controls {
+    top: 33.333cqw;
+  }
 }
 
 @media (min-width: 1024px) {
   .new-arrivals-carousel {
     --new-arrivals-gap: 24px;
+  }
+
+  .new-arrivals-carousel__controls {
+    top: 33.333cqw;
   }
 }
 

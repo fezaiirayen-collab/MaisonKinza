@@ -13,7 +13,6 @@ const NewArrivalsCarousel: React.FC<Props> = ({ products }) => {
   const canSlide = products.length > 2;
   const [currentIndex, setCurrentIndex] = useState(canSlide ? 1 : 0);
   const [isTransitioning, setIsTransitioning] = useState(true);
-  const [isPaused, setIsPaused] = useState(false);
   const resetTimerRef = useRef<number | null>(null);
 
   const slides = useMemo(() => {
@@ -29,14 +28,14 @@ const NewArrivalsCarousel: React.FC<Props> = ({ products }) => {
   }, [canSlide, products.length]);
 
   useEffect(() => {
-    if (!canSlide || isPaused) return undefined;
+    if (!canSlide) return undefined;
 
     const timer = window.setInterval(() => {
       setCurrentIndex((index) => index + 1);
     }, AUTO_PLAY_DELAY);
 
     return () => window.clearInterval(timer);
-  }, [canSlide, isPaused]);
+  }, [canSlide]);
 
   useEffect(() => {
     return () => {
@@ -69,15 +68,7 @@ const NewArrivalsCarousel: React.FC<Props> = ({ products }) => {
   if (products.length === 0) return null;
 
   return (
-    <div
-      className="new-arrivals-carousel"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onFocus={() => setIsPaused(true)}
-      onBlur={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setIsPaused(false);
-      }}
-    >
+    <div className="new-arrivals-carousel">
       <div className="new-arrivals-carousel__viewport">
         <div
           className={`new-arrivals-carousel__track${isTransitioning ? " is-transitioning" : ""}`}
