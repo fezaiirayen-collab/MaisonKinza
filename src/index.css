@@ -188,6 +188,8 @@ textarea:focus {
 .new-arrivals-carousel__viewport {
   overflow: hidden;
   min-width: 0;
+  touch-action: pan-y;
+  user-select: none;
 }
 
 .new-arrivals-carousel__track {

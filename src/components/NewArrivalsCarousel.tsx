@@ -8,12 +8,16 @@ interface Props {
 }
 
 const AUTO_PLAY_DELAY = 4500;
+const SWIPE_THRESHOLD = 45;
 
 const NewArrivalsCarousel: React.FC<Props> = ({ products }) => {
   const canSlide = products.length > 2;
   const [currentIndex, setCurrentIndex] = useState(canSlide ? 1 : 0);
   const [isTransitioning, setIsTransitioning] = useState(true);
   const resetTimerRef = useRef<number | null>(null);
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+  const suppressClickRef = useRef(false);
+  const suppressClickTimerRef = useRef<number | null>(null);
 
   const slides = useMemo(() => {
     if (!canSlide) return products;
@@ -40,6 +44,7 @@ const NewArrivalsCarousel: React.FC<Props> = ({ products }) => {
   useEffect(() => {
     return () => {
       if (resetTimerRef.current !== null) window.clearTimeout(resetTimerRef.current);
+      if (suppressClickTimerRef.current !== null) window.clearTimeout(suppressClickTimerRef.current);
     };
   }, []);
 
@@ -47,6 +52,37 @@ const NewArrivalsCarousel: React.FC<Props> = ({ products }) => {
     if (!canSlide) return;
     setIsTransitioning(true);
     setCurrentIndex((index) => index + direction);
+  };
+
+  const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    const touch = event.touches[0];
+    touchStartRef.current = { x: touch.clientX, y: touch.clientY };
+  };
+
+  const handleTouchEnd = (event: React.TouchEvent<HTMLDivElement>) => {
+    const start = touchStartRef.current;
+    touchStartRef.current = null;
+    if (!start || !canSlide) return;
+
+    const touch = event.changedTouches[0];
+    const deltaX = touch.clientX - start.x;
+    const deltaY = touch.clientY - start.y;
+    if (Math.abs(deltaX) < SWIPE_THRESHOLD || Math.abs(deltaX) <= Math.abs(deltaY)) return;
+
+    event.preventDefault();
+    suppressClickRef.current = true;
+    if (suppressClickTimerRef.current !== null) window.clearTimeout(suppressClickTimerRef.current);
+    suppressClickTimerRef.current = window.setTimeout(() => {
+      suppressClickRef.current = false;
+    }, 500);
+    move(deltaX < 0 ? 1 : -1);
+  };
+
+  const handleClickCapture = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (!suppressClickRef.current) return;
+    event.preventDefault();
+    event.stopPropagation();
+    suppressClickRef.current = false;
   };
 
   const handleTransitionEnd = (event: React.TransitionEvent<HTMLDivElement>) => {
@@ -69,7 +105,12 @@ const NewArrivalsCarousel: React.FC<Props> = ({ products }) => {
 
   return (
     <div className="new-arrivals-carousel">
-      <div className="new-arrivals-carousel__viewport">
+      <div
+        className="new-arrivals-carousel__viewport"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        onClickCapture={handleClickCapture}
+      >
         <div
           className={`new-arrivals-carousel__track${isTransitioning ? " is-transitioning" : ""}`}
           style={{ "--new-arrivals-index": currentIndex } as React.CSSProperties}
