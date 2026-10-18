@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Hero from "@/components/Hero";
 import ServiceBar from "@/components/ServiceBar";
 import ProductGrid from "@/components/ProductGrid";
+import NewArrivalsCarousel from "@/components/NewArrivalsCarousel";
 import ProductImage from "@/components/ProductImage";
 import { useProducts } from "@/context/ProductContext";
 import { useSiteContent } from "@/context/SiteContentContext";
@@ -68,8 +69,8 @@ const HomePage: React.FC = () => {
             </Link>
           </div>
 
-          {/* 4-column Product Grid */}
-          <ProductGrid products={newPieces} columns={4} />
+          {/* Two-card carousel: one product advances at a time on desktop and mobile. */}
+          <NewArrivalsCarousel products={newPieces} />
         </div>
       </section>
 

@@ -177,6 +177,79 @@ textarea:focus {
   margin-top: 12px;
 }
 
+/* New arrivals: two visible cards, with one-card infinite movement. */
+.new-arrivals-carousel {
+  --new-arrivals-gap: 16px;
+  position: relative;
+  min-width: 0;
+}
+
+.new-arrivals-carousel__viewport {
+  overflow: hidden;
+  min-width: 0;
+}
+
+.new-arrivals-carousel__track {
+  --new-arrivals-step: calc((100% + var(--new-arrivals-gap)) / 2);
+  display: flex;
+  gap: var(--new-arrivals-gap);
+  transform: translate3d(calc(-1 * var(--new-arrivals-index) * var(--new-arrivals-step)), 0, 0);
+  will-change: transform;
+}
+
+.new-arrivals-carousel__track.is-transitioning {
+  transition: transform 700ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.new-arrivals-carousel__slide {
+  flex: 0 0 calc((100% - var(--new-arrivals-gap)) / 2);
+  min-width: 0;
+}
+
+.new-arrivals-carousel__controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.new-arrivals-carousel__controls button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: #ffffff;
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+}
+
+.new-arrivals-carousel__controls button:hover,
+.new-arrivals-carousel__controls button:focus-visible {
+  border-color: #000000;
+  background: #000000;
+  color: #ffffff;
+  outline: none;
+}
+
+@media (min-width: 640px) {
+  .new-arrivals-carousel {
+    --new-arrivals-gap: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .new-arrivals-carousel {
+    --new-arrivals-gap: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .new-arrivals-carousel__track.is-transitioning {
+    transition-duration: 1ms;
+  }
+}
+
 /* ─── Standard KENZA Button (Item 20 in Spec) ─────────────────────── */
 .asala-btn {
   display: inline-flex;
