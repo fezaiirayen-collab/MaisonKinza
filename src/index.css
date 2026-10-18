@@ -196,12 +196,17 @@ textarea:focus {
   --new-arrivals-step: calc((100% + var(--new-arrivals-gap)) / 2);
   display: flex;
   gap: var(--new-arrivals-gap);
-  transform: translate3d(calc(-1 * var(--new-arrivals-index) * var(--new-arrivals-step)), 0, 0);
+  transform: translate3d(calc(-1 * var(--new-arrivals-index) * var(--new-arrivals-step) + var(--new-arrivals-drag, 0px)), 0, 0);
   will-change: transform;
 }
 
 .new-arrivals-carousel__track.is-transitioning {
   transition: transform 700ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.new-arrivals-carousel__track.is-dragging {
+  cursor: grabbing;
+  transition: none;
 }
 
 .new-arrivals-carousel__slide {
