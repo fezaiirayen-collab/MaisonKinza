@@ -47,7 +47,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
             toggleFavorite(product);
           }}
           aria-label={fav ? "Retirer des favoris" : "Ajouter aux favoris"}
-          className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 h-9 w-9 flex items-center justify-center bg-white/90 text-black transition-opacity duration-200 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 cursor-pointer hover:bg-black hover:text-white"
+          className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 h-9 w-9 flex items-center justify-center bg-transparent text-black transition-all duration-200 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 cursor-pointer hover:text-stone drop-shadow-[0_1px_3px_rgba(255,255,255,0.75)]"
         >
           <Heart
             size={16}
